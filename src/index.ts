@@ -15,9 +15,9 @@ let surname: string | number;
 
 // Define a function 'func' which takes two numbers as parameters and returns their product.
 const func = (n: number, m: number): number => {
-    console.log(n, m);
-    return n * m;
-}
+  console.log(n, m);
+  return n * m;
+};
 
 // Define a type alias 'UserName' which represents either a string or a number.
 type UserName = string | number;
@@ -30,8 +30,8 @@ type param = (x: number, y: number) => number;
 
 // Declare a function 'func2' of type 'param' and implement it to return the result of dividing 'y' by 'x'.
 const func2: param = (x, y) => {
-    return y / x;
-}
+  return y / x;
+};
 
 // Define an empty array 'arr' which holds numbers.
 const arr: number[] = [];
@@ -49,85 +49,131 @@ const arr4: Array<string | number> = [78, "oil"];
 const arr5: [number, number, number] = [234.3, 343, 34];
 
 // Define an object 'obj' with properties 'height', 'weight', and 'gender'.
-const obj: { height: number, weight: number, gender: boolean } = {
-    height: 343,
-    weight: 232,
-    gender: true
-}
+const obj: { height: number; weight: number; gender: boolean } = {
+  height: 343,
+  weight: 232,
+  gender: true,
+};
 
 // Define an interface 'Obj' with properties 'id', 'username', and optional 'online'.
 interface Obj {
-    id: number,
-    username: string,
-    online?: boolean
+  id: number;
+  username: string;
+  online?: boolean;
 }
 
 // Define objects 'obj1' and 'obj2' implementing 'Obj' interface.
 const obj1: Obj = {
-    id: 4,
-    username: "yashaswi",
-    online: true
-}
+  id: 4,
+  username: "yashaswi",
+  online: true,
+};
 
 const obj2: Obj = {
-    id: 3,
-    username: "kshitij",
-}
+  id: 3,
+  username: "kshitij",
+};
 
 // Define an interface 'NewObj' extending 'Obj' with additional properties and a function.
 interface NewObj extends Obj {
-    address: string,
-    func: (a: number, b: number) => void
+  address: string;
+  func: (a: number, b: number) => void;
 }
 
 // Define objects 'obj3' and 'obj4' implementing 'NewObj' interface.
 const obj3: NewObj = {
-    id: 3,
-    username: "drake",
-    address: "Private jet",
-    func: (q, r) => {
-        console.log(q * r)
-    }
-}
+  id: 3,
+  username: "drake",
+  address: "Private jet",
+  func: (q, r) => {
+    console.log(q * r);
+  },
+};
 
 const obj4: NewObj = {
-    id: 3,
-    username: "random",
-    address: "random",
-    func: (q, r) => {
-        console.log(q * r)
-    }
-}
+  id: 3,
+  username: "random",
+  address: "random",
+  func: (q, r) => {
+    console.log(q * r);
+  },
+};
 
 // Call function from 'obj4' object.
-obj4.func(20, 40)
+obj4.func(20, 40);
 
 // Define a type alias 'FuncType' representing a function type with optional parameter.
-type FuncType = (n: number, m: number, l?: number) => number
+type FuncType = (n: number, m: number, l?: number) => number;
 
 // Define a function 'doSomething' of type 'FuncType' to perform arithmetic operation.
 const doSomething: FuncType = (n, m, l) => {
-    if (typeof l === "undefined") return n * m;
-    return m * n * l;
-}
+  if (typeof l === "undefined") return n * m;
+  return m * n * l;
+};
 
 // Call 'doSomething' function with different arguments.
-doSomething(2, 3)
+doSomething(2, 3);
 
 // Define a type alias 'FuncType2' representing a function type with default parameter.
-type FuncType2 = (n: number, m: number, l: number) => number
+type FuncType2 = (n: number, m: number, l: number) => number;
 const doSomething2: FuncType = (n, m, l = 20) => {
-    return m * n * l;
-}
+  return m * n * l;
+};
 
 // Call 'doSomething2' function with different arguments.
-doSomething2(2, 3)
+doSomething2(2, 3);
 
 // Define a type alias 'FuncType3' representing a function type with rest parameters.
-type FuncType3 = (...m: number[]) => number[]
+type FuncType3 = (...m: number[]) => number[];
 const doSomething3: FuncType3 = (...m) => {
-    return m
-}
+  return m;
+};
 
 // Call 'doSomething3' function with multiple arguments.
-doSomething3(343, 534, 545, 4334, 3434)
+doSomething3(343, 534, 545, 4334, 3434);
+
+// Define a function 'random' that takes a number 'n' and returns the sum of 'n' with itself.
+function random(n: number): number {
+    return n + n;
+  }
+  
+  // Define a function 'getData' that logs information about a product.
+  const getData = (product: {
+    name: string;
+    stock: number;
+    price: number;
+    photo: string;
+  }) => {
+    console.log(product);
+  };
+  
+  // Define an interface 'Product' representing the structure of a product.
+  interface Product {
+      name: string;
+      stock: number;
+      price: number;
+      photo: string;
+      readonly id : string; // Define a readonly property 'id' in the 'Product' interface.
+  }
+  
+  // Define a type 'GetDataType' representing a function type that accepts a 'Product' parameter and returns void.
+  type GetDataType = (product: Product) => void;
+  
+  // Define a function 'getData2' of type 'GetDataType' to log information about a product.
+  const getData2: GetDataType = (product) => {
+      /* product.id="id1" */
+     console.log(product)
+  }
+  
+  // Define an object 'productOne' of type 'Product'.
+  const productOne: Product = {
+      name: "Canon Camera",
+    stock: 54,
+    price: 47487,
+    photo: "string",
+    id: "id" // Assign a value to the readonly property 'id'.
+  }
+  
+  // Call 'getData2' function with 'productOne' object as argument.
+  getData2(productOne)
+  

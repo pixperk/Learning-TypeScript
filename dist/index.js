@@ -34,13 +34,13 @@ const arr5 = [234.3, 343, 34];
 const obj = {
     height: 343,
     weight: 232,
-    gender: true
+    gender: true,
 };
 // Define objects 'obj1' and 'obj2' implementing 'Obj' interface.
 const obj1 = {
     id: 4,
     username: "yashaswi",
-    online: true
+    online: true,
 };
 const obj2 = {
     id: 3,
@@ -53,7 +53,7 @@ const obj3 = {
     address: "Private jet",
     func: (q, r) => {
         console.log(q * r);
-    }
+    },
 };
 const obj4 = {
     id: 3,
@@ -61,7 +61,7 @@ const obj4 = {
     address: "random",
     func: (q, r) => {
         console.log(q * r);
-    }
+    },
 };
 // Call function from 'obj4' object.
 obj4.func(20, 40);
@@ -83,3 +83,26 @@ const doSomething3 = (...m) => {
 };
 // Call 'doSomething3' function with multiple arguments.
 doSomething3(343, 534, 545, 4334, 3434);
+// Define a function 'random' that takes a number 'n' and returns the sum of 'n' with itself.
+function random(n) {
+    return n + n;
+}
+// Define a function 'getData' that logs information about a product.
+const getData = (product) => {
+    console.log(product);
+};
+// Define a function 'getData2' of type 'GetDataType' to log information about a product.
+const getData2 = (product) => {
+    /* product.id="id1" */
+    console.log(product);
+};
+// Define an object 'productOne' of type 'Product'.
+const productOne = {
+    name: "Canon Camera",
+    stock: 54,
+    price: 47487,
+    photo: "string",
+    id: "id" // Assign a value to the readonly property 'id'.
+};
+// Call 'getData2' function with 'productOne' object as argument.
+getData2(productOne);
