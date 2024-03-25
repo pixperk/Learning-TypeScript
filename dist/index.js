@@ -156,4 +156,20 @@ class Pdt {
 // Create an instance 'Laptop' of the 'Pdt' class representing a MacBook product.
 const Laptop = new Pdt("MacBook", 989089, true);
 //-----------------------------------------------------
+/* const button = <HTMLElement>document.getElementById("btn")
+const button = document.getElementById("btn") as HTMLElement */
 const button = document.getElementById("btn");
+const img = document.getElementById("myImg");
+const img2 = document.querySelector("img");
+button.onclick;
+const form = document.getElementById("myForm");
+const myInput = document.querySelector("form>input");
+form.onsubmit = (e) => {
+    e.preventDefault();
+    const value = Number(myInput.value);
+    const h2 = document.createElement("h2");
+    h2.textContent = String(value) + " + 20 = " + String(value + 20);
+    const body = document.querySelector("body");
+    body.append(h2);
+};
+const myobj = {};
