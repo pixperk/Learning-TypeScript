@@ -189,111 +189,266 @@ const errorHandler = (): never => {
 
 // Define a class 'Player' with private, public, and protected properties.
 class Player {
-    readonly id:string; // Define a readonly property 'id'.
+  readonly id: string; // Define a readonly property 'id'.
   constructor(
     private height: number,
     public weight: number,
     protected power: number
   ) {
-    this.id = String(Math.random()*100) // Initialize 'id' with a random string.
-  } 
-  myHeight = () => this.height; // Define a method 'myHeight' returning the 'height' property.
-  get getMyWeight ():number{ // Define a getter for 'weight'.
-    return this.weight
+    this.id = String(Math.random() * 100); // Initialize 'id' with a random string.
   }
-  set changeHeight(val:number){  // Define a setter for 'changeHeight' to modify 'height'.
-    this.height=val
+  myHeight = () => this.height; // Define a method 'myHeight' returning the 'height' property.
+  get getMyWeight(): number {
+    // Define a getter for 'weight'.
+    return this.weight;
+  }
+  set changeHeight(val: number) {
+    // Define a setter for 'changeHeight' to modify 'height'.
+    this.height = val;
   }
 }
 
 // Create an instance 'player1' of the 'Player' class.
 const player1 = new Player(150, 76, 125);
 console.log(player1.myHeight()); // Log the height of 'player1'.
-console.log(player1.getMyWeight) // Log the weight of 'player1'.
-player1.changeHeight=154 // Change the height of 'player1'.
+console.log(player1.getMyWeight); // Log the weight of 'player1'.
+player1.changeHeight = 154; // Change the height of 'player1'.
 
 // Define a subclass 'Boss' inheriting from 'Player' with an additional property.
 class Boss extends Player {
-    special:boolean; // Define a property 'special' specific to bosses.
+  special: boolean; // Define a property 'special' specific to bosses.
   constructor(height: number, weight: number, power: number, special: boolean) {
     super(height, weight, power);
-    this.special=special // Initialize 'special' property.
+    this.special = special; // Initialize 'special' property.
   }
-  getPower = () =>this.power // Define a method 'getPower' to get the power of the boss.
+  getPower = () => this.power; // Define a method 'getPower' to get the power of the boss.
 }
 
 // Create an instance 'boss1' of the 'Boss' class.
-const boss1 = new Boss(123, 77, 87, true)
+const boss1 = new Boss(123, 77, 87, true);
 
 // Define an interface 'ProductType' representing the structure of a product.
-interface ProductType{
-    name:string,
-    price:number,
-    available:boolean,
-    discount?:boolean // Define an optional property 'discount'.
+interface ProductType {
+  name: string;
+  price: number;
+  available: boolean;
+  discount?: boolean; // Define an optional property 'discount'.
 }
 
 // Define an interface 'giveId' with a method 'getId' returning a string.
-interface giveId{
-    getId:()=>string
+interface giveId {
+  getId: () => string;
 }
 
 // Define a class 'Pdt' implementing 'ProductType' and 'giveId' interfaces.
-class Pdt implements ProductType, giveId{
-    private id : string = String(Math.random()*100) // Initialize 'id' with a random string.
-    constructor(public name:string,public price : number,public available : boolean){
-    }
-    getId=() => this.id // Implement the 'getId' method.
+class Pdt implements ProductType, giveId {
+  private id: string = String(Math.random() * 100); // Initialize 'id' with a random string.
+  constructor(
+    public name: string,
+    public price: number,
+    public available: boolean
+  ) {}
+  getId = () => this.id; // Implement the 'getId' method.
 }
 
 // Create an instance 'Laptop' of the 'Pdt' class representing a MacBook product.
-const Laptop = new Pdt("MacBook", 989089, true)
+const Laptop = new Pdt("MacBook", 989089, true);
 
 //-----------------------------------------------------
 
 /* const button = <HTMLElement>document.getElementById("btn")
 const button = document.getElementById("btn") as HTMLElement */
-const button = document.getElementById("btn")!
-const img = document.getElementById("myImg") as HTMLImageElement
-const img2= document.querySelector("img")!
-button.onclick
+const button = document.getElementById("btn")!;
+const img = document.getElementById("myImg") as HTMLImageElement;
+const img2 = document.querySelector("img")!;
+button.onclick;
 
-const form = document.getElementById("myForm") as HTMLFormElement
-const myInput = document.querySelector("form>input") as HTMLInputElement
-form.onsubmit=(e)=>{
-    e.preventDefault()
-    const value = Number(myInput.value)
-   const h2 = document.createElement("h2")
-   h2.textContent=String(value)+" + 20 = "+String(value+20)
-   const body=document.querySelector("body")!;
-   body.append(h2)
+const form = document.getElementById("myForm") as HTMLFormElement;
+const myInput = document.querySelector("form>input") as HTMLInputElement;
+form.onsubmit = (e) => {
+  e.preventDefault();
+  const value = Number(myInput.value);
+  const h2 = document.createElement("h2");
+  h2.textContent = String(value) + " + 20 = " + String(value + 20);
+  const body = document.querySelector("body")!;
+  body.append(h2);
+};
 
+interface Person {
+  name: string;
+  email: string;
+}
+const myobj: Person = {
+  name: "Yash",
+  email: "string",
+};
+
+let key = "name";
+myobj[/* key as keyof Person/ */ key as keyof typeof myobj];
+
+const getName = (): string => {
+  return myobj.name;
+};
+
+const getEmail = (): string => {
+  return myobj.email;
+};
+
+const getInfo = (key: keyof Person): string => {
+  return myobj[key];
+};
+
+console.log(getInfo("name"));
+
+//Type Utility
+//Partial<Type>
+
+type User = {
+  name: string;
+  email: string;
+};
+type User2 = Partial<User>; //props of User in User 2 are optional
+
+//Required<Type>
+
+type Car = {
+  color?: string;
+  manufacture?: string;
+};
+
+type Cycle = Required<Car>; //opposite of partial
+
+type Bike = Readonly<Cycle>;
+
+type Vehicle = {
+  type: string;
+  color: string;
+};
+
+interface UserInfo {
+  age: number;
 }
 
-interface Person{
-    name:string,
-    email:string
-}
-const myobj:Person = {
-    name:"Yash",
-    email: "string"
+type PeopleName = "john" | "andre" | "elon" | "jack";
 
-}
+const users: Record<PeopleName, UserInfo> = {
+  john: { age: 45 },
+  andre: { age: 45 },
+  elon: { age: 45 },
+  jack: { age: 45 },
+};
 
-let key ="name"
-myobj[/* key as keyof Person/ */key as keyof typeof myobj]
-
-const getName = ():string=>{
-    return myobj.name;
-}
-
-const getEmail = ():string=>{
-    return myobj.email;
+interface OrderInfo {
+  readonly id: string;
+  user: string;
+  city: string;
+  state: string;
+  status: string;
 }
 
-const getInfo = (key:keyof Person):string=>{
-    return myobj[key];
+type ShippingInfo = Pick<OrderInfo, "city" | "state">;
+
+type OrderDataBase = Omit<OrderInfo, "status" | "user">;
+
+type MyUnion = string | number | boolean | null | undefined;
+type Random = Exclude<MyUnion, number>;
+type Include = Extract<MyUnion, boolean>;
+type New = NonNullable<MyUnion>;
+
+const myFunc = (a: number, b: string) => {
+  console.log(a + b);
+};
+
+type Param = Parameters<typeof myFunc>;
+
+class Sample {
+  constructor(public s: string, public t: string) {}
 }
+type ConstParam = ConstructorParameters<typeof Sample>;
 
-console.log(getInfo("name"))
+type FunctionType = ReturnType<typeof myFunc>;
 
+type Instyp = InstanceType<typeof Sample>;
+
+const newFunc = <CustomType>(n: CustomType): CustomType => {
+  return n;
+};
+
+const ans = newFunc(20);
+
+type Person_ = {
+  name: string;
+  age: number;
+};
+
+const Gen = <T>(n: T): T => {
+  return n;
+};
+
+const someObj: Person_ = {
+  name: "Yash",
+  age: 909,
+};
+
+const test = Gen<Person_>(someObj);
+
+const array: Array<number> = [];
+
+const testFunc = <T, U>(n: T, o: U) => {
+  return { n, o };
+};
+
+const testRun = testFunc<number, string>(4, "test");
+
+const testFunc2 = <T, U extends T>(n: T, o: U) => {
+  return { n, o };
+};
+
+const testRun2 = testFunc2<number, number>(76.45, 54);
+
+type Type = {
+  name: string;
+  age: number;
+};
+
+type Type2 = { name: string; age: number; email: string };
+
+const example: Type = {
+  name: "some",
+  age: 0,
+};
+const example2: Type2 = {
+  name: "some",
+  age: 0,
+  email: "email",
+};
+
+const testRun3 = testFunc2<Type, Type2>(example, example2);
+
+const Users: Type[] = [
+  {
+    name: "some",
+    age: 0,
+  },
+  {
+    name: "something",
+    age: 0,
+  },
+  {
+    name: "igloo",
+    age: 6565,
+  },
+  {
+    name: "pluto",
+    age: 8676,
+  },
+];
+
+const filterByPeoples = <T,Key extends keyof T, >(arr: T[], property: Key, value:T[Key] ):T[] => {
+return arr.filter(item=>item[property]===value)
+};
+
+const filteredPeopleByName = filterByPeoples(Users, "name", "pluto")
+console.log(filteredPeopleByName);
+const filteredPeopleByAge = filterByPeoples(Users, "age", 0)
+console.log(filteredPeopleByAge);

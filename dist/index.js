@@ -122,9 +122,11 @@ class Player {
         this.id = String(Math.random() * 100); // Initialize 'id' with a random string.
     }
     get getMyWeight() {
+        // Define a getter for 'weight'.
         return this.weight;
     }
     set changeHeight(val) {
+        // Define a setter for 'changeHeight' to modify 'height'.
         this.height = val;
     }
 }
@@ -174,7 +176,7 @@ form.onsubmit = (e) => {
 };
 const myobj = {
     name: "Yash",
-    email: "string"
+    email: "string",
 };
 let key = "name";
 myobj[ /* key as keyof Person/ */key];
@@ -188,3 +190,74 @@ const getInfo = (key) => {
     return myobj[key];
 };
 console.log(getInfo("name"));
+const users = {
+    john: { age: 45 },
+    andre: { age: 45 },
+    elon: { age: 45 },
+    jack: { age: 45 },
+};
+const myFunc = (a, b) => {
+    console.log(a + b);
+};
+class Sample {
+    constructor(s, t) {
+        this.s = s;
+        this.t = t;
+    }
+}
+const newFunc = (n) => {
+    return n;
+};
+const ans = newFunc(20);
+const Gen = (n) => {
+    return n;
+};
+const someObj = {
+    name: "Yash",
+    age: 909,
+};
+const test = Gen(someObj);
+const array = [];
+const testFunc = (n, o) => {
+    return { n, o };
+};
+const testRun = testFunc(4, "test");
+const testFunc2 = (n, o) => {
+    return { n, o };
+};
+const testRun2 = testFunc2(76.45, 54);
+const example = {
+    name: "some",
+    age: 0,
+};
+const example2 = {
+    name: "some",
+    age: 0,
+    email: "email",
+};
+const testRun3 = testFunc2(example, example2);
+const Users = [
+    {
+        name: "some",
+        age: 0,
+    },
+    {
+        name: "something",
+        age: 0,
+    },
+    {
+        name: "igloo",
+        age: 6565,
+    },
+    {
+        name: "pluto",
+        age: 8676,
+    },
+];
+const filterByPeoples = (arr, property, value) => {
+    return arr.filter(item => item[property] === value);
+};
+const filteredPeopleByName = filterByPeoples(Users, "name", "pluto");
+console.log(filteredPeopleByName);
+const filteredPeopleByAge = filterByPeoples(Users, "age", 0);
+console.log(filteredPeopleByAge);
