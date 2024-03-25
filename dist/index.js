@@ -172,4 +172,19 @@ form.onsubmit = (e) => {
     const body = document.querySelector("body");
     body.append(h2);
 };
-const myobj = {};
+const myobj = {
+    name: "Yash",
+    email: "string"
+};
+let key = "name";
+myobj[ /* key as keyof Person/ */key];
+const getName = () => {
+    return myobj.name;
+};
+const getEmail = () => {
+    return myobj.email;
+};
+const getInfo = (key) => {
+    return myobj[key];
+};
+console.log(getInfo("name"));

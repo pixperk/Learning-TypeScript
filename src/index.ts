@@ -270,9 +270,30 @@ form.onsubmit=(e)=>{
 
 }
 
-
-
-const myobj = {
-
+interface Person{
+    name:string,
+    email:string
+}
+const myobj:Person = {
+    name:"Yash",
+    email: "string"
 
 }
+
+let key ="name"
+myobj[/* key as keyof Person/ */key as keyof typeof myobj]
+
+const getName = ():string=>{
+    return myobj.name;
+}
+
+const getEmail = ():string=>{
+    return myobj.email;
+}
+
+const getInfo = (key:keyof Person):string=>{
+    return myobj[key];
+}
+
+console.log(getInfo("name"))
+
