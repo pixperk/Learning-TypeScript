@@ -102,7 +102,58 @@ const productOne = {
     stock: 54,
     price: 47487,
     photo: "string",
-    id: "id" // Assign a value to the readonly property 'id'.
+    id: "id", // Assign a value to the readonly property 'id'.
 };
 // Call 'getData2' function with 'productOne' object as argument.
 getData2(productOne);
+// Declare a variable 'theme' of type 'themeMode' and assign it the value "dark".
+const theme = "dark";
+// Define a function 'errorHandler' that never returns, indicating an error.
+const errorHandler = () => {
+    throw new Error();
+};
+// Define a class 'Player' with private, public, and protected properties.
+class Player {
+    constructor(height, weight, power) {
+        this.height = height;
+        this.weight = weight;
+        this.power = power;
+        this.myHeight = () => this.height; // Define a method 'myHeight' returning the 'height' property.
+        this.id = String(Math.random() * 100); // Initialize 'id' with a random string.
+    }
+    get getMyWeight() {
+        return this.weight;
+    }
+    set changeHeight(val) {
+        this.height = val;
+    }
+}
+// Create an instance 'player1' of the 'Player' class.
+const player1 = new Player(150, 76, 125);
+console.log(player1.myHeight()); // Log the height of 'player1'.
+console.log(player1.getMyWeight); // Log the weight of 'player1'.
+player1.changeHeight = 154; // Change the height of 'player1'.
+// Define a subclass 'Boss' inheriting from 'Player' with an additional property.
+class Boss extends Player {
+    constructor(height, weight, power, special) {
+        super(height, weight, power);
+        this.getPower = () => this.power; // Define a method 'getPower' to get the power of the boss.
+        this.special = special; // Initialize 'special' property.
+    }
+}
+// Create an instance 'boss1' of the 'Boss' class.
+const boss1 = new Boss(123, 77, 87, true);
+// Define a class 'Pdt' implementing 'ProductType' and 'giveId' interfaces.
+class Pdt {
+    constructor(name, price, available) {
+        this.name = name;
+        this.price = price;
+        this.available = available;
+        this.id = String(Math.random() * 100); // Initialize 'id' with a random string.
+        this.getId = () => this.id; // Implement the 'getId' method.
+    }
+}
+// Create an instance 'Laptop' of the 'Pdt' class representing a MacBook product.
+const Laptop = new Pdt("MacBook", 989089, true);
+//-----------------------------------------------------
+const button = document.getElementById("btn");
