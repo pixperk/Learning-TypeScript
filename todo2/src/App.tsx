@@ -15,8 +15,26 @@ const App = () => {
   const [todos, setTodos] = useState<TodoItemType[]>([]);
   const [title, setTitle]=useState<string>("")
 
-  const completeHandler = (id: string): void => {};
-  const deleteHandler = (id: string): void => {};
+  const completeHandler = (id: string): void => {
+    const newTodos:TodoItemType[] = todos.map(i=>{
+      if(i.id===id) i.isCompleted = !i.isCompleted
+      return i
+    })
+    setTodos(newTodos)
+  };
+
+  const deleteHandler = (id: string): void => {
+    const newTodos:TodoItemType[] = todos.filter(i=>i.id!==id)
+  
+    setTodos(newTodos)
+  };
+  const editHandler = (id: string, text:string): void => {
+    const newTodos:TodoItemType[] = todos.map(i=>{
+      if(i.id===id) i.title = text
+      return i
+    })
+    setTodos(newTodos)
+  };
 
   const submitHandler = ():void => {
    
@@ -41,6 +59,7 @@ const App = () => {
           <TodoItem
             completeHandler={completeHandler}
             deleteHandler={deleteHandler}
+            editHandler={editHandler}
             key={i.id}
             todo={i}
           />
@@ -48,15 +67,14 @@ const App = () => {
       </Stack>
       <TextField value={title}
       onChange={(e)=>setTitle(e.target.value)}
-      fullWidth label={"New Task"} />
+      fullWidth label={"New Task"}
+      onKeyDown={(e)=>{
+        if(e.key==="Enter" && title!="") submitHandler()
+      }} />
       <Button onClick={submitHandler}
-        sx={{
-          margin: "1rem 0",
-          padding: "0..5rem",
-        }}
         fullWidth
         variant="contained"
-        
+        disabled={title===""}
       >
         <IoIosAddCircleOutline size={20} />
       </Button>
